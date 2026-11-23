@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "app.morphe"
-version = "0.9.0"
+version = "0.9.1"
 
 val studioPath = providers.gradleProperty("studioPath")
     .orElse(providers.environmentVariable("ANDROID_STUDIO_HOME"))

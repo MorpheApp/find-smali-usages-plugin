@@ -14,7 +14,7 @@ Use **Move** or **Change Package** to update recognized class descriptors when m
 
 ## Build and install
 
-The plugin targets Android Studio builds on the `262` IntelliJ Platform branch. Point Gradle to the installed IDE and run it with JDK 25 (Android Studio's bundled runtime works on Linux):
+The plugin targets Android Studio builds on the `262` IntelliJ Platform branch and requires Kotlin K2 mode. Point Gradle to the installed IDE and run it with JDK 25 (Android Studio's bundled runtime works on Linux):
 
 ```sh
 export ANDROID_STUDIO_HOME=/path/to/android-studio
@@ -22,7 +22,7 @@ export JAVA_HOME="$ANDROID_STUDIO_HOME/jbr"
 ./gradlew buildPlugin
 ```
 
-In Android Studio, open **Settings > Plugins > gear icon > Install Plugin from Disk**, select `build/distributions/find-smali-usages-0.9.0.zip`, and restart the IDE.
+In Android Studio, open **Settings > Plugins > gear icon > Install Plugin from Disk**, select `build/distributions/find-smali-usages-0.9.1.zip`, and restart the IDE.
 
 Kotlin string templates may use compile-time constants in descriptors and computed register names. Targets assembled only at patch time are not inferred. Moving a Kotlin top-level function to another package or file still requires updating its generated JVM owner in Smali manually. Moving or renaming an enclosing class individually does not update references to its nested classes. The plugin does not change shrinking rules.
 
