@@ -1,0 +1,23 @@
+<idea-plugin>
+    <id>find-smali-usages</id>
+    <name>Find Smali Usages</name>
+    <vendor>Find Smali Usages contributors</vendor>
+    <description><![CDATA[
+        Finds class descriptors in Kotlin strings and exact method calls in inline
+        Kotlin Smali or .smali files. Find Usages links back to matching locations,
+        and Go to Declaration navigates from Kotlin method descriptors to their targets.
+        Rename, package moves, and compatible signature changes update recognized references.
+    ]]></description>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <fileBasedIndex implementation="dev.smalicalls.SmaliCallFiles"/>
+        <implicitUsageProvider implementation="dev.smalicalls.SmaliUsageProvider"/>
+        <referencesSearch implementation="dev.smalicalls.SmaliReferenceSearch"/>
+        <methodReferencesSearch implementation="dev.smalicalls.SmaliReferenceSearch$Methods"/>
+        <gotoDeclarationHandler implementation="dev.smalicalls.SmaliGotoDeclarationHandler"/>
+        <refactoring.changeSignatureUsageProcessor implementation="dev.smalicalls.SmaliChangeSignature" order="first"/>
+        <codeInsight.daemonBoundCodeVisionProvider implementation="dev.smalicalls.SmaliUsageCodeVision"/>
+    </extensions>
+</idea-plugin>
